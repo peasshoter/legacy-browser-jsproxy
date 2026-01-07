@@ -1,3 +1,4 @@
+> [🇨🇳 中文文档请点击这里](./README_CN.md)
 # Chrome 68 Resurrection Proxy 🚀
 
 A specialized HTTP proxy tool designed to make modern, heavy web applications (like Weibo) workable on legacy browsers (specifically Chrome 68).
