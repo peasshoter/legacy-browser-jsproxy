@@ -21,27 +21,22 @@
 确保你的电脑已安装 [Node.js](https://nodejs.org/) (建议 v14+)。
 
 ### 2. 安装依赖
-```bash
-git clone [https://github.com/你的用户名/legacy-browser-jsproxy.git](https://github.com/你的用户名/legacy-browser-jsproxy.git)
+git clone [https://github.com/peasshoter/legacy-browser-jsproxy.git]
 cd legacy-browser-jsproxy
 npm install
-3. 生成并信任证书 (HTTPS 必须)
+### 3. 生成并信任证书 (HTTPS 必须)
 本项目基于 AnyProxy，需要解密 HTTPS 流量才能修改代码。
-
-Bash
-
 npx anyproxy-ca
 执行后会生成根证书（通常位于 ~/.anyproxy/certificates/）。
 
 关键步骤：请双击打开生成的 rootCA.crt，将其安装并设置为 “始终信任”（Windows 下需放入“受信任的根证书颁发机构”）。
 
-4. 启动代理
-Bash
+### 4. 启动代理
 
 npx anyproxy --rule ./proxy_rule.js --intercept
 看到 Http proxy started at 8001 即表示启动成功。
 
-5. 浏览器设置
+### 5. 浏览器设置
 打开你的 Chrome 68（或其他旧浏览器），配置代理服务器：
 
 协议：HTTP 和 HTTPS
@@ -57,6 +52,7 @@ npx anyproxy --rule ./proxy_rule.js --intercept
 JavaScript
 
 // 修改此处以匹配你需要修复的网站资源特征
+// 匹配的是这样的js, https://h5.sinaimg.cn/m/weibo-pro-next/assets/index-D89y6FrO.js
 const isTargetJs = url.includes('你的目标域名.com') && 
                    url.includes('/assets/') && // 尽量缩小范围以提升性能
                    url.split('?')[0].endsWith('.js');
